@@ -1,9 +1,7 @@
 import os
-import string
 
 import pandas as pd
 import numpy as np
-from tqdm import tqdm
 
 
 def normalize_nparray(data: np.array, min_bound: float, max_bound: float, min_data: float, max_data: float) -> np.array:
