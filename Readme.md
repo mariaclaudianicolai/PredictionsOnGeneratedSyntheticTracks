@@ -2,8 +2,7 @@
 
 ## 1. Generating and Plotting Synthetic Tracks
 
-To start with, we'll generate coordinates (x and y) and plot them to visualize the track lines.
-
+We'll begin by generating coordinates (x and y) to create synthetic track lines. Specifically, we'll generate two classes of tracks.
 ### 1.1 Memory Concept
 
 Each generated track shares a memory factor. This memory factor indicates the degree of similarity between tracks. For instance, tracks with a memory factor of
@@ -19,7 +18,8 @@ We'll plot tracks with Matplotlib.
 
 ### 1.4 Opencv plot
 
-- We will use OpenCV to plot tracks, both with aliasing and antialiasing. 
+- We will use OpenCV to plot tracks, both with aliasing and antialiasing.
 - The tracks will be shifted to the center of the image before plotting.
 
-
+## 2. Classification
+We'll make a classification by using CNN model.
