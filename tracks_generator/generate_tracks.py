@@ -4,9 +4,10 @@ import string
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
+from typing import List
 
 
-def generate_tracks(track_points, num_generated_points, memory, sigma_noise):
+def generate_tracks(track_points: np.array, num_generated_points: int, memory: float, sigma_noise: float) -> np.array:
     # Initialiaze x and y
     x = [0]
     y = [0]
@@ -31,7 +32,7 @@ def generate_tracks(track_points, num_generated_points, memory, sigma_noise):
     return x, y
 
 
-def create_df_generated_tracks(track_points, num_generated_points, total_tracks, memory):
+def create_df_generated_tracks(track_points: np.array, num_generated_points: int, total_tracks: int, memory: List[float]) -> type(pd.DataFrame):
     # Define empy list for df
     df_generated_tracks = []
     # Define a list of letters from 'a' to 'z'
@@ -55,6 +56,7 @@ def create_df_generated_tracks(track_points, num_generated_points, total_tracks,
 
 
 def main():
+    print('Running...')
     base_dir = '/mnt/c/Users/Claudia/PycharmProjects/SyntheticTracksGenerator'
 
     # Define number of points for track
@@ -69,9 +71,8 @@ def main():
     directory = os.path.join(base_dir, 'datasets')
     os.makedirs(directory, exist_ok=True)
 
-    # generate new tracks and save them in a csv
+    # -generate new tracks and save them in a csv
     df_generated_tracks = create_df_generated_tracks(track_points, num_generated_points, total_tracks, memories)
-    print(df_generated_tracks)
     # Save concatenated DataFrame to CSV
     str_memories = ''.join(['{:02d}'.format(int(memory * 10)) for memory in memories])
     df_generated_tracks.to_csv(os.path.join(directory, 'generated_tracks_{}.csv'.format(str_memories)), sep=',', index=False)
