@@ -56,7 +56,6 @@ def create_df_generated_tracks(track_points: np.array, num_generated_points: int
 
 
 def main():
-    print('Running...')
     base_dir = '/mnt/c/Users/Claudia/PycharmProjects/SyntheticTracksGenerator'
 
     # Define number of points for track
@@ -79,6 +78,8 @@ def main():
 
 
 if __name__ == '__main__':
+    print('Running...')
+
     main()
 
     print('\nDone!')
