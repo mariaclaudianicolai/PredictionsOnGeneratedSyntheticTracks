@@ -1,4 +1,5 @@
 import os
+from typing import Tuple, List
 
 import pandas as pd
 import argparse
@@ -11,7 +12,7 @@ import matplotlib.pyplot as plt
 import DataGenerator
 
 
-def create_df(file_path):
+def create_df(file_path: str) -> type(pd.DataFrame):
     df = pd.DataFrame(columns=['id', 'actual_class', 'filename', 'filename_fullpath', 'prediction'])
     files = os.listdir(file_path)
     filenames = [filename for filename in files]
@@ -26,7 +27,7 @@ def create_df(file_path):
     return df
 
 
-def build_model(input_shape, class_count, learning_rate):
+def build_model(input_shape: Tuple[int], class_count: int, learning_rate: float):
     model = Sequential()
 
     model.add(Conv2D(32, (3, 3), activation='relu', input_shape=input_shape))
@@ -56,7 +57,7 @@ def build_model(input_shape, class_count, learning_rate):
     return model
 
 
-def plot_loss(path, training_loss, validation_loss, plot_name):
+def plot_loss(path: str, training_loss: List[float], validation_loss: List[float], plot_name: str) -> None:
     plt.plot(training_loss, label='Training')
     plt.plot(validation_loss, label='Validation')
     plt.ylim(0, 0.8)
@@ -103,7 +104,7 @@ def main():
 
     # Create df with data from the images
     print('\nPreparing dataframe...')
-    data_path = os.path.join(os.path.dirname(args.base_dir), 'datasets', args.dataset)
+    data_path = str(os.path.join(os.path.dirname(args.base_dir), 'datasets', args.dataset))
 
     data_df = create_df(data_path)
 
@@ -172,8 +173,8 @@ def main():
 
     print(
         'Experiment:\n\tdataset: {}\n\texp_name: {}\n\timage_size: {}\n\tepochs: {}\n\tlearning_rate: {}'.format(args.dataset, args.exp_name, args.image_size,
-                                                                                                                  args.epochs,
-                                                                                                                  args.learning_rate))
+                                                                                                                 args.epochs,
+                                                                                                                 args.learning_rate))
 
 
 if __name__ == '__main__':
