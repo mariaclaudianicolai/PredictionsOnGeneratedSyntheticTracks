@@ -74,7 +74,7 @@ def main():
     parser = argparse.ArgumentParser()
     # Add command line options
     parser.add_argument("-d", "--dataset", type=str, help="Name of dataset to use in the experiment", required=True)
-    parser.add_argument("-n", "--exp_name", type=str, help="Path output results (use same name of your dataset)", required=True)
+    parser.add_argument("-n", "--exp_name", type=str, help="Give name to experiment", required=True)
     parser.add_argument("-i", "--image_size", type=int, help="Image size", default=112)
     parser.add_argument("-l", "--learning_rate", type=float, help="Learning rate", default=0.001)
     parser.add_argument("-e", "--epochs", type=int, help="Num of epochs", default=30)
