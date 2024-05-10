@@ -6,7 +6,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import pandas as pd
 
 
-def count_prediction_errors(df: type(pd.DataFrame), dataset: str, exp_name: str):
+def count_prediction_errors(df: type(pd.DataFrame), dataset: str, exp_name: str)-> tuple:
     print('\ntotal tracks in {}_{}: {}'.format(dataset, exp_name, df.shape[0]))
     # Compare two columns for equality
     count_errors = (df['actual_class'] != df['predicted_class']).sum()
@@ -20,7 +20,7 @@ def calculate_accuracy(df: type(pd.DataFrame)) -> float:
     return accuracy
 
 
-def compute_confusion_matrix(df, dataset, exp_name):
+def compute_confusion_matrix(df: type(pd.DataFrame), dataset: str, exp_name: str):
     cf_mtx = confusion_matrix(df['actual_class'], df['predicted_class'])
     disp = ConfusionMatrixDisplay(confusion_matrix=cf_mtx)
     disp.plot(cmap=plt.cm.Blues)
